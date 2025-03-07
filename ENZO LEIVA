@@ -1,0 +1,134 @@
+Antonia
+
+package com.mycompany.mavenproject2;
+
+// Clase abstracta Persona
+abstract class Persona {
+    private String nombre;
+    private int edad;
+    private String direccion;
+
+    public Persona(String nombre, int edad, String direccion) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.direccion = direccion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    // Método abstracto que debe ser implementado en las subclases
+    public abstract String obtenerInformacion();
+}
+2. Fabricio DoctoryDeportista
+
+package com.mycompany.mavenproject2;
+
+// Subclase Doctor
+class Doctor extends Persona {
+    private String especialidad;
+    private int aniosExperiencia;
+
+    public Doctor(String nombre, int edad, String direccion, String especialidad, int aniosExperiencia) {
+        super(nombre, edad, direccion);
+        this.especialidad = especialidad;
+        this.aniosExperiencia = aniosExperiencia;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public int getAniosExperiencia() {
+        return aniosExperiencia;
+    }
+
+    public void setAniosExperiencia(int aniosExperiencia) {
+        this.aniosExperiencia = aniosExperiencia;
+    }
+
+    @Override
+    public String obtenerInformacion() {
+        return "Doctor " + getNombre() + ", Edad: " + getEdad() + ", Especialidad: " + getEspecialidad() + ", Años de experiencia: " + getAniosExperiencia();
+    }
+}
+
+// Subclase Deportista
+class Deportista extends Persona {
+    private String deporte;
+    private String equipo;
+
+    public Deportista(String nombre, int edad, String direccion, String deporte, String equipo) {
+        super(nombre, edad, direccion);
+        this.deporte = deporte;
+        this.equipo = equipo;
+    }
+
+    public String getDeporte() {
+        return deporte;
+    }
+
+    public void setDeporte(String deporte) {
+        this.deporte = deporte;
+    }
+
+    public String getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(String equipo) {
+        this.equipo = equipo;
+    }
+
+    @Override
+    public String obtenerInformacion() {
+        return "Deportista " + getNombre() + ", Edad: " + getEdad() + ", Deporte: " + getDeporte() + ", Equipo: " + getEquipo();
+    }
+}
+3.compañero
+
+package com.mycompany.mavenproject2;
+
+public class Main {
+    public static void main(String[] args) {
+        // Ejemplo de uso
+        Doctor persona1 = new Doctor("Francisco Alvarado", 52, "Colonia Primavera", "Ortopeda", 20);
+        Deportista persona2 = new Deportista("Cinthia Andino", 30, "San Pedro Sula", "Fútbol", "Motagua");
+
+        // Obtener información de las personas
+        System.out.println(persona1.obtenerInformacion());
+        System.out.println(persona2.obtenerInformacion());
+
+        // Modificar y obtener información usando getters y setters
+        persona1.setNombre("Jose Zuniga");
+        persona2.setDeporte("Tennis");
+
+        System.out.println(persona1.obtenerInformacion());
+        System.out.println(persona2.obtenerInformacion());
+    }
+}
